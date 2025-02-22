@@ -22,7 +22,9 @@ def sorteiaPlvrs(listPlvrs):
 def testeTentativa(palavra, letra, letrasCorretas):
     if letra in palavra:
         letrasCorretas.append(letra)
-        print("certô a letra")
+        print("Letra correta!")
+    else:
+        print('Letra errada!')
 
 def jogar(lista):
     palavra = sorteiaPlvrs(lista)
