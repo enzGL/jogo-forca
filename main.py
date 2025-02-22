@@ -19,22 +19,37 @@ def sorteiaPlvrs(listPlvrs):
     numAleatorio = random.randint(0, qntdPlvrs)
     return listPlvrs[numAleatorio]
 
-def testeTentativa(palavra, letra, letrasCorretas):
+def testeTentativa(palavra, letra, letrasCorretas, letrasTentadas):
+    system('cls')
     if letra in palavra:
         letrasCorretas.append(letra)
-        print("Letra correta!")
+        return True
     else:
-        print('Letra errada!')
+        return False
 
 def jogar(lista):
     palavra = sorteiaPlvrs(lista)
     letra = ''
     letrasCorretas = []
+    letrasTentadas = []
 
     while letra != '0':
         imprimirPlvra(palavra, letrasCorretas)
         letra = input('Digite uma letra: ')
-        testeTentativa(palavra, letra, letrasCorretas)
+
+        if letra in letrasCorretas:
+            system('cls')
+            print('Você já tentou essa letra...')
+            continue
+
+        if  testeTentativa(palavra, letra, letrasCorretas, letrasTentadas):
+            print('Acertou !')
+        else: 
+            if letra in letrasTentadas:
+                print('Errou !')
+            else:
+                print(f"{letrasTentadas}", end='-')
+                print('Errou !')
 
 lista = [
     'python', 'php', 'java', 'javascript', 'csharp', 'node', 'html', 'css', 'ruby', 'delphi'
