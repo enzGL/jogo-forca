@@ -1,58 +1,21 @@
-from os import system
 import random
+from os import system
+from Pessoa import Pessoa
 
 system('cls')
 
-
-def imprimirPlvra (palavra, letrasCorretas):
-    print(palavra)
-    for letra in palavra:
-        if letra in letrasCorretas:
-         print(letra, end=' ')
-        else:
-            print('_', end=' ')
-    print()
+ps = Pessoa('Enzo', 10, 'Sete de Setembro', 323, 'Americana-SP')
+ps2 = Pessoa('Paulo', 19, 'Carioba', 99, 'Americana-SP')
 
 
-def sorteiaPlvrs(listPlvrs):
-    qntdPlvrs = len(listPlvrs) -1
-    numAleatorio = random.randint(0, qntdPlvrs)
-    return listPlvrs[numAleatorio]
+# ps.apresentacao()
+# ps.apresentaEndereco()
 
-def testeTentativa(palavra, letra, letrasCorretas, letrasTentadas):
-    system('cls')
-    if letra in palavra:
-        letrasCorretas.append(letra)
-        return True
-    else:
-        return False
+# ps2.apresentacao()
+# ps2.apresentaEndereco()
 
-def jogar(lista):
-    palavra = sorteiaPlvrs(lista)
-    letra = ''
-    letrasCorretas = []
-    letrasTentadas = []
+ps.completarFicha(1.70, 'Verde')
 
-    while letra != '0':
-        imprimirPlvra(palavra, letrasCorretas)
-        letra = input('Digite uma letra: ')
 
-        if letra in letrasCorretas:
-            system('cls')
-            print('Você já tentou essa letra...')
-            continue
-
-        if  testeTentativa(palavra, letra, letrasCorretas, letrasTentadas):
-            print('Acertou !')
-        else: 
-            if letra in letrasTentadas:
-                print('Errou !')
-            else:
-                print(f"{letrasTentadas}", end='-')
-                print('Errou !')
-
-lista = [
-    'python', 'php', 'java', 'javascript', 'csharp', 'node', 'html', 'css', 'ruby', 'delphi'
-]
-
-jogar(lista)
+print(ps.corOlhos)
+print(ps2.corOlhos)
